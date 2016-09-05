@@ -99,9 +99,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public Usuario criaUsuario(
-            final String nome,
-            final String sobrenome) {
+    public Usuario criaUsuario(final String nome, final String sobrenome, final String login, final String senha) {
         Usuario result = null;
         PreparedStatement stmtInsert = null;
         Connection conn = UsuarioUtil.getConnection();
@@ -126,7 +124,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                         "executeUpdate return value: "
                         + rows);
             }
-            result = new Usuario(usuario_id, nome, sobrenome);
+            result = new Usuario(usuario_id, nome, sobrenome, login, senha);
         } catch (SQLException ex) {
             log.error(ex);
             throw new DAORuntimeException(ex);
@@ -140,7 +138,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     @Override
     public void updateUsuario(final int id,
             final String nome,
-            final String sobrenome) throws UsuarioNaoEncontradoException {
+            final String sobrenome, final String login, final String senha) throws UsuarioNaoEncontradoException {
         Connection conn = UsuarioUtil.getConnection();
         PreparedStatement stmtUpdate = null;
         try {
@@ -200,5 +198,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             UsuarioUtil.closeJDBCConnection(conn);
         }
         return result;
+    }
+
+    @Override
+    public Usuario login(String login, String senha) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

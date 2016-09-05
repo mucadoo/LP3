@@ -13,11 +13,13 @@ public interface UsuarioDAO {
 
     public void removeUsuario(int id) throws UsuarioNaoEncontradoException;
 
-    public Usuario criaUsuario(String nome, String sobrenome);
+    public Usuario criaUsuario(String nome, String sobrenome, String login, String senha);
 
-    public void updateUsuario(int id, String nome, String sobrenome) throws UsuarioNaoEncontradoException;
+    public void updateUsuario(int id, String nome, String sobrenome, String login, String senha) throws UsuarioNaoEncontradoException;
 
     public void close();
 
     public boolean isClosed();
+
+    public Usuario login(String login, String senha);
 }

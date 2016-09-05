@@ -100,7 +100,9 @@ public final class UsuarioUtil {
             int id = rs.getInt("usuario_id");
             String nome = rs.getString("nome");
             String sobrenome = rs.getString("sobrenome");
-            Usuario u = new Usuario(id, nome, sobrenome);
+            String login = rs.getString("login");
+            String senha = rs.getString("senha");
+            Usuario u = new Usuario(id, nome, sobrenome, login, senha);
             result.add(u);
         }
         return result;

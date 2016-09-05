@@ -11,6 +11,7 @@ import mack.entities.Usuario;
 
 public class BuscaUsuarioController extends AbstractController {
 
+    @Override
     public void execute() {
         try {
             String name = this.getRequest().getParameter("name");

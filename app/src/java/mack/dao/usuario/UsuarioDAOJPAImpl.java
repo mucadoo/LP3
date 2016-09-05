@@ -3,7 +3,6 @@ package mack.dao.usuario;
 import mack.entities.Usuario;
 import java.util.*;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import org.apache.commons.logging.*;
@@ -23,7 +22,6 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         if (u == null) {
             throw new UsuarioNaoEncontradoException("usuario não encontrado");
         }
-        close();
         return u;
     }
 
@@ -37,24 +35,34 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
     }
 
     @Override
-    public void removeUsuario(final int id)
-            throws UsuarioNaoEncontradoException {
-    }
-
-    @Override
-    public Usuario criaUsuario(final String nome, final String sobrenome) {
+    public void removeUsuario(final int id) throws UsuarioNaoEncontradoException {
+        Usuario u = this.buscaUsuarioPorId(id);
         em.getTransaction().begin();
-        Usuario result = new Usuario(null, nome, sobrenome);
-        em.persist(result);
+        em.remove(u);
         em.getTransaction().commit();
         close();
-        return result;
     }
 
     @Override
-    public void updateUsuario(final int id,
-            final String nome,
-            final String sobrenome) throws UsuarioNaoEncontradoException {
+    public Usuario criaUsuario(final String nome, final String sobrenome, final String login, final String senha) {
+        em.getTransaction().begin();
+        Usuario u = new Usuario(null, nome, sobrenome, login, senha);
+        em.persist(u);
+        em.getTransaction().commit();
+        close();
+        return u;
+    }
+
+    @Override
+    public void updateUsuario(final int id, final String nome, final String sobrenome, final String login, final String senha) throws UsuarioNaoEncontradoException {
+        Usuario u = this.buscaUsuarioPorId(id);
+        em.getTransaction().begin();
+        u.setNome(nome);
+        u.setSobrenome(sobrenome);
+        u.setLogin(login);
+        u.setSenha(senha);
+        em.getTransaction().commit();
+        close();
     }
 
     @Override
@@ -75,5 +83,15 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         Collection<Usuario> lista = em.createQuery("SELECT u FROM Usuario u").getResultList();
         close();
         return lista;
+    }
+    
+    @Override
+    public Usuario login(String login, String senha) {
+        Query q = em.createQuery("select u from Usuario u WHERE login = :login and senha = :senha");
+        q.setParameter("login", login);
+        q.setParameter("senha", senha);
+        Usuario u = q.getResultList().isEmpty() ? null: (Usuario) q.getResultList().get(0);
+        close();
+        return u;
     }
 }

@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -20,14 +19,20 @@ public class Usuario {
     private String nome;
     @Column(name = "sobrenome")
     private String sobrenome;
+    @Column(name = "login")
+    private String login;
+    @Column(name = "senha")
+    private String senha;
 
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nome, String sobrenome) {
+    public Usuario(Integer id, String nome, String sobrenome, String login, String senha) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
+        this.login = login;
+        this.senha = senha;
     }
 
     public String getNome() {
@@ -46,6 +51,22 @@ public class Usuario {
         this.sobrenome = sobrenome;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     public int getId() {
         return this.id;
     }
@@ -59,6 +80,10 @@ public class Usuario {
         sbResult.append(nome);
         sbResult.append(", sobrenome = ");
         sbResult.append(sobrenome);
+        sbResult.append(", login = ");
+        sbResult.append(login);
+        sbResult.append(", senha = ");
+        sbResult.append(senha);
         return sbResult.toString();
     }
 }

@@ -1,7 +1,5 @@
 package mack.controllers.impl;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mack.controllers.AbstractController;
@@ -17,7 +15,7 @@ public class RetornaUsuarioController extends AbstractController {
             Usuario usuario = new Usuario();
             UsuarioDAO User = new UsuarioDAOFactory().getUsuarioDAO();
             usuario = User.buscaUsuarioPorId(id);
-            this.setReturnPage("/lista.jsp");
+            this.setReturnPage("/edita.jsp");
             this.getRequest().setAttribute("usuario", usuario);
         } catch (Exception ex) {
             Logger.getLogger(RetornaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
