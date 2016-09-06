@@ -84,13 +84,13 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         close();
         return lista;
     }
-    
+
     @Override
     public Usuario login(String login, String senha) {
         Query q = em.createQuery("select u from Usuario u WHERE login = :login and senha = :senha");
         q.setParameter("login", login);
         q.setParameter("senha", senha);
-        Usuario u = q.getResultList().isEmpty() ? null: (Usuario) q.getResultList().get(0);
+        Usuario u = q.getResultList().isEmpty() ? null : (Usuario) q.getResultList().get(0);
         close();
         return u;
     }

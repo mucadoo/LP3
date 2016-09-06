@@ -29,7 +29,8 @@ public class LoginController extends AbstractController {
                 this.getResponse().addCookie(userName);
                 this.setReturnPage("/sucessoLogin.jsp");
             } else {
-                this.setReturnPage("/login.html");
+                this.setReturnPage("/login.jsp");
+                this.getRequest().setAttribute("msg", "Nome de usuário ou senha incorretos");
             }
         } catch (Exception ex) {
             Logger.getLogger(ListaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);

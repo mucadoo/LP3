@@ -36,9 +36,11 @@ public class FiltroAutenticacao implements Filter {
 
         HttpSession session = req.getSession(false);
 
-        if (session == null && !(uri.endsWith("login.html") || control.equals("Login") || control.equals("ListaUsuario"))) {
-            this.context.log("Unauthorized access request");
-            res.sendRedirect("login.html");
+        if ((session == null || session.getAttribute("usuario") == null) && !(uri.endsWith("login.jsp") || uri.endsWith("LP3_-_1/") || control.equals("Login"))) {
+            request.setAttribute("msg", "Unauthorized access request");
+            res.sendRedirect("login.jsp");
+        } else if (session != null && session.getAttribute("usuario") != null && (uri.endsWith("login.jsp") || uri.endsWith("LP3_-_1/") || control.equals("Login"))) {
+            res.sendRedirect("sucessoLogin.jsp");
         } else {
             // pass the request along the filter chain
             chain.doFilter(request, response);

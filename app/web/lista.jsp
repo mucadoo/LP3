@@ -6,15 +6,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <script type="text/javascript">
-            var lnks = document.getElementsByClassName("delete");
-            for (var i = 0; i < lnks.length; i++) {
-                lnks[i].onclick = function () {
-                    return confirm("Tem certeza?");
-                };
-            }
-
-        </script>
     </head>
     <body>
         <h1>Usuários</h1>
@@ -39,8 +30,8 @@
                 <td><%=u.getSobrenome()%></td>
                 <td><%=u.getLogin()%></td>
                 <td><%=u.getSenha()%></td>
-                <td><a href="FrontControllerServlet?control=RetornaUsuario&id=<%=u.getId()%>">/</a></td>
-                <td><a class="delete" href="FrontControllerServlet?control=DeletaUsuario&id=<%=u.getId()%>">X</a></td>
+                <td><a href="FrontControllerServlet?control=RetornaUsuario&id=<%=u.getId()%>">X</a></td>
+                <td><a href="FrontControllerServlet?control=DeletaUsuario&id=<%=u.getId()%>">X</a></td>
             </tr>
             <%}%>
         </table>

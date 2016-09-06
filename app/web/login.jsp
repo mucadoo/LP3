@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>PÃ¡gina de Login</title>
+        <title>Página de Login</title>
     </head>
     <body>
         <form action="FrontControllerServlet?control=Login" method="post">
@@ -12,5 +12,9 @@
             <br>
             <input type="submit" value="Login">
         </form>
+        <%
+            String msg = request.getAttribute("msg") == null ? "" : (String) request.getAttribute("msg");
+        %>
+        <h3><%=msg%></h3>
     </body>
 </html>
