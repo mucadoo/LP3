@@ -29,6 +29,24 @@ public class FrontControllerServlet extends HttpServlet {
             Controller control = ControllerFactory.getControllerByFullClassName(controller);
             control.init(request, response);
             control.execute();
+
+            switch (control.getReturnType()) {
+                case FORWARD:
+                    RequestDispatcher rd;
+                    rd = request.getRequestDispatcher(control.getReturnPage());
+                    rd.forward(request, response);
+                    break;
+                case REDIRECT:
+                    response.sendRedirect(control.getReturnPage());
+                    break;
+                case PRINT:
+                    out.print(control.getReturnPage());
+                    out.close();
+                    break;
+                default:
+                    break;
+            }
+
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(control.getReturnPage());
             requestDispatcher.forward(request, response);
         } catch (Exception e) {

@@ -17,7 +17,8 @@ public class EditaUsuarioController extends AbstractController {
             String senha = this.getRequest().getParameter("senha");
             UsuarioDAO User = new UsuarioDAOFactory().getUsuarioDAO();
             User.updateUsuario(id, name, surname, login, senha);
-            this.setReturnPage("/index.html");
+            this.setReturnPage("/home.html");
+            this.setReturnType(ReturnType.FORWARD);
         } catch (Exception ex) {
             Logger.getLogger(EditaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

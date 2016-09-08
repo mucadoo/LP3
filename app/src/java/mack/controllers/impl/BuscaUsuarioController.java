@@ -20,6 +20,7 @@ public class BuscaUsuarioController extends AbstractController {
             usuarios = (List) User.buscaUsuarioPorNome(name);
             this.setReturnPage("/lista.jsp");
             this.getRequest().setAttribute("usuarios", usuarios);
+            this.setReturnType(ReturnType.FORWARD);
         } catch (Exception ex) {
             Logger.getLogger(BuscaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

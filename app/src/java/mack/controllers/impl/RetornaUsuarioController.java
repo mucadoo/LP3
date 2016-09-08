@@ -9,6 +9,7 @@ import mack.entities.Usuario;
 
 public class RetornaUsuarioController extends AbstractController {
 
+    @Override
     public void execute() {
         try {
             Integer id = Integer.parseInt(this.getRequest().getParameter("id"));
@@ -17,6 +18,7 @@ public class RetornaUsuarioController extends AbstractController {
             usuario = User.buscaUsuarioPorId(id);
             this.setReturnPage("/edita.jsp");
             this.getRequest().setAttribute("usuario", usuario);
+            this.setReturnType(ReturnType.FORWARD);
         } catch (Exception ex) {
             Logger.getLogger(RetornaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

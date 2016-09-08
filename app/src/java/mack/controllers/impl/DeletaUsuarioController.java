@@ -13,7 +13,8 @@ public class DeletaUsuarioController extends AbstractController {
             Integer id = Integer.parseInt(this.getRequest().getParameter("id"));
             UsuarioDAO User = new UsuarioDAOFactory().getUsuarioDAO();
             User.removeUsuario(id);
-            this.setReturnPage("/index.html");
+            this.setReturnPage("/home.html");
+            this.setReturnType(ReturnType.FORWARD);
         } catch (Exception ex) {
             Logger.getLogger(DeletaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

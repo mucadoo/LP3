@@ -7,8 +7,10 @@ public abstract class AbstractController implements Controller {
 
     private HttpServletRequest request;
     private HttpServletResponse response;
+    protected ReturnType type;
     protected String returnPage;
 
+    @Override
     public void init(HttpServletRequest request, HttpServletResponse response) {
         this.setRequest(request);
         this.setResponse(response);
@@ -30,12 +32,22 @@ public abstract class AbstractController implements Controller {
         this.response = response;
     }
 
+    @Override
     public String getReturnPage() {
         return returnPage;
     }
 
     public void setReturnPage(String returnPage) {
         this.returnPage = returnPage;
+    }
+
+    @Override
+    public ReturnType getReturnType() {
+        return type;
+    }
+
+    public void setReturnType(ReturnType type) {
+        this.type = type;
     }
 
 }

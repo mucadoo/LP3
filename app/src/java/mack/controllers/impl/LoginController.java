@@ -27,10 +27,12 @@ public class LoginController extends AbstractController {
                 Cookie userName = new Cookie("usuario", login);
                 userName.setMaxAge(30 * 60);
                 this.getResponse().addCookie(userName);
-                this.setReturnPage("/sucessoLogin.jsp");
+                this.setReturnPage("sucessoLogin.jsp");
+                this.setReturnType(ReturnType.REDIRECT);
             } else {
-                this.setReturnPage("/login.jsp");
+                this.setReturnPage("/index.jsp");
                 this.getRequest().setAttribute("msg", "Nome de usuário ou senha incorretos");
+                this.setReturnType(ReturnType.FORWARD);
             }
         } catch (Exception ex) {
             Logger.getLogger(ListaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);

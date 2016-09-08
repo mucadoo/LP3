@@ -27,7 +27,8 @@ public class LogoutController extends AbstractController {
             if (session != null) {
                 session.invalidate();
             }
-            this.getResponse().sendRedirect("login.jsp");
+            this.getResponse().sendRedirect("index.jsp");
+            this.setReturnType(ReturnType.FORWARD);
         } catch (Exception ex) {
             Logger.getLogger(ListaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

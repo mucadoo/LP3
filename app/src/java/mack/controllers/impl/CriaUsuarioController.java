@@ -17,7 +17,8 @@ public class CriaUsuarioController extends AbstractController {
             String senha = this.getRequest().getParameter("senha");
             UsuarioDAO User = UsuarioDAOFactory.getUsuarioDAO();
             User.criaUsuario(name, surname, login, senha);
-            this.setReturnPage("/index.html");
+            this.setReturnPage("/home.html");
+            this.setReturnType(ReturnType.FORWARD);
         } catch (Exception ex) {
             Logger.getLogger(CriaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

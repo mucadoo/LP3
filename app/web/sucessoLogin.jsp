@@ -29,7 +29,7 @@
         <br>
         User=<%=user%>
         <br>
-        <a href="index.html">Home Page</a>
+        <a href="home.html">Home Page</a>
         <a href="checkout.jsp">Checkout Page</a>
     </body>
 </html>
