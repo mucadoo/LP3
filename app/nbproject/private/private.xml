@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/samuel.britto/Documents/Git/LP3/app/web/sucessoLogin.jsp</file>
+            <file>file:/C:/Users/samuel.britto/Documents/Git/LP3/app/src/java/mack/controllers/impl/DeletaUsuarioController.java</file>
             <file>file:/C:/Users/samuel.britto/Documents/Git/LP3/app/src/java/mack/filters/FiltroAutenticacao.java</file>
-            <file>file:/C:/Users/samuel.britto/Documents/Git/LP3/app/src/java/mack/servlets/FrontControllerServlet.java</file>
+            <file>file:/C:/Users/samuel.britto/Documents/Git/LP3/app/src/java/mack/controllers/impl/EditaUsuarioController.java</file>
+            <file>file:/C:/Users/samuel.britto/Documents/Git/LP3/app/src/java/mack/controllers/impl/CriaUsuarioController.java</file>
+            <file>file:/C:/Users/samuel.britto/Documents/Git/LP3/app/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>

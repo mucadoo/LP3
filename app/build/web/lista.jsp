@@ -10,17 +10,43 @@
         <link rel="stylesheet" type="text/css" href="style/lib/bootstrap.min.css">
         <script src="script/lib/jquery-3.1.0.min.js" type="text/javascript"></script>
         <script src="script/lib/bootstrap.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#editModal').on('show.bs.modal', function (e) {
+                    var url = $(e.relatedTarget).attr('href');
+                    $.get(url, function (data) {
+                        $(e.currentTarget).html(data);
+                    });
+                });
+
+                var btnsDel = document.getElementsByClassName("delUser");
+
+                for (var i = 0; i < btnsDel.length; i++)
+                {
+                    btnsDel[i].onclick = function () {
+                        return confirm("Tem certeza");
+                    };
+                }
+
+            });
+        </script>
     </head>
     <body>
 
         <div class="jumbotron" style="background: #FFF">
             <div class="container">
                 <h1>Users</h1>
-                <p><a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#myModal">Create User</a></p>
-                    <%
-                        List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
-                    %>
-                    <%if (usuarios.size() > 0) { %>
+                <p><a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#myModal">Create User</a></p>
+                <form class="form-inline" action="FrontControllerServlet?control=BuscaUsuario" method="post">
+                    <div class="form-group">
+                        <input name="name" type="text" class="form-control" placeholder="Insira o Nome">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Pesquisar">
+                </form>
+                <%
+                    List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
+                %>
+                <%if (usuarios.size() > 0) { %>
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="thead-inverse">
                         <tr>
@@ -41,8 +67,8 @@
                             <td><%=u.getSobrenome()%></td>
                             <td><%=u.getLogin()%></td>
                             <td><%=u.getSenha()%></td>
-                            <td><a class="btn btn-warning btn-sm" href="FrontControllerServlet?control=RetornaUsuario&id=<%=u.getId()%>">Editar</a></td>
-                            <td><a class="btn btn-danger btn-sm" href="FrontControllerServlet?control=DeletaUsuario&id=<%=u.getId()%>">Exluir</a></td>
+                            <td><a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal" href="FrontControllerServlet?control=RetornaUsuario&id=<%=u.getId()%>">Editar</a></td>
+                            <td><a class="btn btn-danger btn-sm delUser" href="FrontControllerServlet?control=DeletaUsuario&id=<%=u.getId()%>">Exluir</a></td>
                         </tr>
                     </tbody>
                     <%}%>
@@ -59,19 +85,37 @@
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                    <form action="FrontControllerServlet?control=CriaUsuario" method="post" role="form">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Criar Usuário</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="newName">Nome</label>
+                                <input id="newName" name="name" type="text" class="form-control" placeholder="Insira o Nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="newSurname">Sobrenome</label>
+                                <input id="newSurname" name="surname" type="text" class="form-control" placeholder="Insira o Sobrenome">
+                            </div>
+                            <div class="form-group">
+                                <label for="newLogin">Login</label>
+                                <input id="newLogin" name="login" type="text" class="form-control" placeholder="Insira o Login">
+                            </div>
+                            <div class="form-group">
+                                <label for="newPass">Password</label>
+                                <input id="newPass" name="senha" type="text" class="form-control" placeholder="Insira a Senha">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <input type="submit" class="btn btn-primary" value="Salvar">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
     </body>
 </html>
