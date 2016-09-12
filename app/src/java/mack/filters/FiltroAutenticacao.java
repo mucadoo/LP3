@@ -36,16 +36,10 @@ public class FiltroAutenticacao implements Filter {
         HttpSession session = req.getSession(false);
 
         if ((session == null || session.getAttribute("usuario") == null) && !(uri.endsWith("index.jsp") || uri.endsWith("LP3_-_1/") || control.equals("Login") || uri.endsWith(".css") || uri.endsWith(".js"))) {
-<<<<<<< HEAD
             req.setAttribute("msg", "Unauthorized access request");
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/index.jsp");
             requestDispatcher.forward(req, res);
         } else if (session != null && session.getAttribute("usuario") != null && (uri.endsWith("index.jsp") || uri.endsWith("LP3_-_1/") || control.equals("Login"))) {
-=======
-            request.setAttribute("msg", "Unauthorized access request");
-            res.sendRedirect("index.jsp");
-        } else if (session != null && session.getAttribute("usuario") != null && (uri.endsWith("index.jsp") || uri.endsWith("LP3_-_1/") || control.equals("Login") || uri.endsWith(".css") || uri.endsWith(".js"))) {
->>>>>>> origin/master
             res.sendRedirect("sucessoLogin.jsp");
         } else {
             // pass the request along the filter chain
