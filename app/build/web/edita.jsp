@@ -31,6 +31,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                 <input type="submit" class="btn btn-primary" value="Salvar">
+                <input type="submit" lass="btn btn-primary" value="Salvar">
             </div>
         </form>
     </div>

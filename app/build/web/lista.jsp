@@ -24,16 +24,23 @@
                 for (var i = 0; i < btnsDel.length; i++)
                 {
                     btnsDel[i].onclick = function () {
+<<<<<<< HEAD
                         return confirm("Tem certeza?");
+=======
+                        return confirm("Tem certeza");
+>>>>>>> origin/master
                     };
                 }
 
             });
+<<<<<<< HEAD
             
             document.getElementsByTagName("body")[0].onload = function (){
                 alert("loaded!");
             };
             
+=======
+>>>>>>> origin/master
         </script>
     </head>
     <body>

@@ -1,6 +1,10 @@
 <%@page import="mack.entities.Usuario"%>
 <%@page import="java.util.List"%>
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+=======
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+>>>>>>> origin/master
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,15 +16,27 @@
         <script src="script/lib/bootstrap.min.js" type="text/javascript"></script>
     </head>
     <body>
+<<<<<<< HEAD
         <div class="jumbotron">
             <div class="container">
                 <h1>Loginá</h1>
                 <form action="FrontControllerServlet?control=Login" method="post">
+=======
+
+        <div class="jumbotron" style="background: #FFF">
+            <div class="container">
+                <h1>Login</h1>
+                <form action="FrontControllerServlet?control=BuscaUsuario" method="post">
+>>>>>>> origin/master
                     <div class="form-group">
                         <input name="login" type="text" class="form-control" placeholder="Insira o Nome">
                     </div>
                     <div class="form-group">
+<<<<<<< HEAD
                         <input name="senha" type="password" class="form-control" placeholder="Insira a Senha">
+=======
+                        <input name="login" type="text" class="form-control" placeholder="Insira o Nome">
+>>>>>>> origin/master
                     </div>
                     <input type="submit" class="btn btn-primary" value="Entrar">
                 </form>

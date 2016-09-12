@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Sat Sep 10 17:01:09 BRT 2016 : Apache Derby Network Server - 10.12.1.1 - (1704137) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
 Sat Sep 10 17:02:24 BRT 2016:
@@ -12,3 +13,6 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Samuel\Documents\Git\LP3\db-derby-10.12.1.1-bin\bin
 Database Class Loader started - derby.database.classpath=''
+=======
+Fri Sep 09 17:18:58 BRT 2016 : Apache Derby Network Server - 10.12.1.1 - (1704137) started and ready to accept connections on port 1527
+>>>>>>> origin/master
