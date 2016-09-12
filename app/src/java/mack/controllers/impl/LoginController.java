@@ -18,6 +18,9 @@ public class LoginController extends AbstractController {
             String login = this.getRequest().getParameter("login");
             String senha = this.getRequest().getParameter("senha");
             UsuarioDAO User = UsuarioDAOFactory.getUsuarioDAO();
+            if(User.buscaUsuarioPorNome("Admin").isEmpty()){
+                User.criaUsuario("Admin", "", "admin", "admin");
+            }
             Usuario u = User.login(login, senha);
             if (u != null) {
                 HttpSession session = this.getRequest().getSession();

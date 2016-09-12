@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/samuel.britto/Documents/Git/LP3/app/src/java/mack/filters/FiltroAutenticacao.java</file>
-            <file>file:/C:/Users/samuel.britto/Documents/Git/LP3/app/src/java/mack/servlets/FrontControllerServlet.java</file>
+            <file>file:/C:/Users/Samuel/Documents/Git/LP3/app/web/index.jsp</file>
+            <file>file:/C:/Users/Samuel/Documents/Git/LP3/app/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Samuel/Documents/Git/LP3/app/web/sucessoLogin.jsp</file>
+            <file>file:/C:/Users/Samuel/Documents/Git/LP3/app/src/java/mack/servlets/FrontControllerServlet.java</file>
+            <file>file:/C:/Users/Samuel/Documents/Git/LP3/app/src/java/mack/controllers/impl/LoginController.java</file>
+            <file>file:/C:/Users/Samuel/Documents/Git/LP3/app/src/java/mack/filters/FiltroAutenticacao.java</file>
+            <file>file:/C:/Users/Samuel/Documents/Git/LP3/app/src/java/mack/controllers/impl/ListaUsuarioController.java</file>
         </group>
     </open-files>
 </project-private>

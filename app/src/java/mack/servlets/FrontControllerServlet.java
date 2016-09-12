@@ -23,6 +23,8 @@ public class FrontControllerServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         try {
             String controller = request.getParameter("control");
@@ -40,15 +42,11 @@ public class FrontControllerServlet extends HttpServlet {
                     response.sendRedirect(control.getReturnPage());
                     break;
                 case PRINT:
-                    out.print(control.getReturnPage());
-                    out.close();
+                    out.print("Teste");
                     break;
                 default:
                     break;
             }
-
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(control.getReturnPage());
-            requestDispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

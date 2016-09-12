@@ -30,7 +30,7 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         Query q = em.createQuery("select u from Usuario u WHERE nome like :search or sobrenome like :search");
         q.setParameter("search", "%" + nome + "%");
         Collection<Usuario> lista = q.getResultList();
-        close();
+        //close();
         return lista;
     }
 
@@ -49,7 +49,7 @@ public class UsuarioDAOJPAImpl implements UsuarioDAO {
         Usuario u = new Usuario(null, nome, sobrenome, login, senha);
         em.persist(u);
         em.getTransaction().commit();
-        close();
+        //close();
         return u;
     }
 

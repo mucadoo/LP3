@@ -4,9 +4,17 @@
         <servlet-name>FrontControllerServlet</servlet-name>
         <servlet-class>mack.servlets.FrontControllerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FirstBeanServlet</servlet-name>
+        <servlet-class>mack.servlets.FirstBeanServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FrontControllerServlet</servlet-name>
         <url-pattern>/FrontControllerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FirstBeanServlet</servlet-name>
+        <url-pattern>/FirstBeanServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
